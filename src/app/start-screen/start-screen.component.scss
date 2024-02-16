@@ -1,0 +1,101 @@
+.start-screen-container {
+    height: 100vh;
+    width: 100vw;
+    background-color: #615f5f;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    text {
+        fill: #ffb222;
+        font-size: 32px;
+        width: 500;
+        font-weight: bolder;
+    }
+
+    path {
+        fill: transparent;
+    }
+}
+
+.curved-text-container {
+    max-width: 1500px;
+    width: 100%;
+    max-height: 50%;
+    position: relative;
+}
+
+.curved-text {
+    transform-origin: center;
+    animation: textScale 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes textScale {
+    0% {
+        font-size: 20px;
+    }
+
+    50% {
+        font-size: 30px;
+    }
+
+    100% {
+        font-size: 20px;
+    }
+}
+
+button {
+    background-color: rgb(255, 178, 34);
+    border-radius: 7px;
+    min-height: 50px;
+    min-width: 200px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    transition: transform 0.3s ease;
+    z-index: 10;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+}
+
+.question {
+    font-size: 32px;
+    color: rgb(255, 178, 34);
+    padding-bottom: 40px;
+}
+
+.think-smiley {
+    width: 125px;
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 62.5px);
+    animation: smileyAni 2s linear infinite;
+}
+
+@keyframes smileyAni {
+    0% {
+        transform: scaleX(1); /* Keine Spiegelung */
+    }
+    49.9% {
+        transform: scaleX(1); /* Keine Spiegelung */
+    }
+    50% {
+        transform: scaleX(-1); /* Horizontales Spiegeln */
+    }
+
+    99.9% {
+        transform: scaleX(-1); /* Horizontales Spiegeln */
+    }
+
+    100% {
+        transform: scaleX(1); /* Keine Spiegelung */
+    }
+    
+}
