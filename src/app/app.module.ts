@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StartScreenComponent } from './start-screen/start-screen.component';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { QuizComponent } from './quiz/quiz.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartScreenComponent
+    StartScreenComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

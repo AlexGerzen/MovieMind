@@ -14,6 +14,10 @@
         font-size: 32px;
         width: 500;
         font-weight: bolder;
+
+        &:hover {
+            cursor: default;
+        }
     }
 
     path {
@@ -66,7 +70,15 @@ button {
         cursor: pointer;
         transform: scale(1.1);
     }
+
+    &:active {
+        background-color:black;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    }
+
 }
+
 
 .question {
     font-size: 32px;

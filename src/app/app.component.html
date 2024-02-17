@@ -1,1 +1,2 @@
-<app-start-screen></app-start-screen>
+<app-start-screen (showQuiz)="showQuiz()" *ngIf="showStartScreenStatus"></app-start-screen>
+<app-quiz *ngIf="showQuizStatus"></app-quiz>

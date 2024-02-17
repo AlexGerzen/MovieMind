@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-start-screen',
@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class StartScreenComponent implements OnInit {
   mirrorSmileyStatus: boolean = false;
   mirrorSmileyStyle: { [key: string]: string } = { transform: 'scaleX(1)' };
+  @Output() showQuiz: EventEmitter<any> = new EventEmitter();
 
   constructor() {
 
@@ -42,6 +43,9 @@ export class StartScreenComponent implements OnInit {
     }, 30)
   }
 
+  /**
+   * This function is used to animate the smiley
+   */
   animateSmiley() {
     setInterval(() => {
       if (this.mirrorSmileyStatus) {
@@ -55,13 +59,26 @@ export class StartScreenComponent implements OnInit {
     }, 2000);
   }
 
+  /**
+   * This function is used to mirror the smiley
+   */
   mirrorSmiley() {
     this.mirrorSmileyStatus = true;
     this.mirrorSmileyStyle = { transform: 'scaleX(1)' };
   }
 
+  /**
+   * This function is used reset the mirror of the smiley
+   */
   resetSmiley() {
     this.mirrorSmileyStatus = false;
     this.mirrorSmileyStyle = { transform: 'scaleX(-1)' };
+  }
+
+  /**
+   * This function is used to to trigger the "shwoQuiz" function in the parent component 
+   */
+  triggerShowQuiz() {
+    this.showQuiz.emit();
   }
 }
