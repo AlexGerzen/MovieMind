@@ -6,13 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./start-screen.component.scss']
 })
 export class StartScreenComponent implements OnInit {
+  mirrorSmileyStatus: boolean = false;
+  mirrorSmileyStyle: { [key: string]: string } = { transform: 'scaleX(1)' };
 
   constructor() {
 
   }
 
   ngOnInit(): void {
-    this.centerCurvedText()
+    this.centerCurvedText();
+    this.animateSmiley();
   }
 
   /**
@@ -36,7 +39,29 @@ export class StartScreenComponent implements OnInit {
           textPath.setAttribute('startOffset', String(startOffset));
         }
       }
-    }, 10)
+    }, 30)
+  }
 
+  animateSmiley() {
+    setInterval(() => {
+      if (this.mirrorSmileyStatus) {
+        this.resetSmiley()
+      } else {
+        this.mirrorSmiley();
+      }
+      setTimeout(() => {
+
+      }, 2000)
+    }, 2000);
+  }
+
+  mirrorSmiley() {
+    this.mirrorSmileyStatus = true;
+    this.mirrorSmileyStyle = { transform: 'scaleX(1)' };
+  }
+
+  resetSmiley() {
+    this.mirrorSmileyStatus = false;
+    this.mirrorSmileyStyle = { transform: 'scaleX(-1)' };
   }
 }
