@@ -6,7 +6,11 @@
                 <img [style.filter]="'blur(' + blurValue + 'px)'" class="movie-poster" src="{{movie.poster}}" alt="">
                 <mat-icon [class.lower-blur-icon]="showIcon" (click)="lowerBlurEffect()">blur_off</mat-icon>
             </div>
-            <input type="text" placeholder="Make a guess" name="" id="">
+            <div class="input-container">
+                <input [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name="" id="">
+                <button (click)="checkPlayerAnswer()">Check answer</button>
+            </div>
+
             <div class="hints">
                 <div>Genre:
                     <p>{{movie.genre}}</p>
@@ -20,5 +24,10 @@
             </div>
 
         </mat-card-content>
+        <div class="progressbar">
+            <div [style.width]="(currentProgress + '0%')">
+                {{currentProgress}}/10
+            </div>
+        </div>
     </mat-card>
 </div>

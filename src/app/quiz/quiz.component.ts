@@ -16,6 +16,8 @@ export class QuizComponent implements OnInit {
   movieList: string[] = [];
   blurValue: number = 10;
   showIcon: boolean = true;
+  playerAnswer: string = '';
+  currentProgress: number = 1;
 
   constructor(private http: HttpClient) {
 
@@ -62,7 +64,7 @@ export class QuizComponent implements OnInit {
         throw new Error('Fehler beim Abrufen der Daten');
       }
       const movieData = await response.json();
-      this.movie = new Movie(movieData);
+      this.movie = new Movie(movieData);   
     } catch (error) {
       console.error('Fehler beim Abrufen der Daten:', error);
       throw error;
@@ -84,8 +86,15 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  /**
+   * This function is used to lower the blur effect of the poster
+   */
   lowerBlurEffect() {
     this.blurValue = this.blurValue - 6;
     this.showIcon = false;
+  }
+
+  checkPlayerAnswer() {
+    console.log(this.movie.title.toLowerCase() == this.playerAnswer.toLowerCase());
   }
 }
