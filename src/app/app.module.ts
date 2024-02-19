@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import {FormsModule} from '@angular/forms';
 import { QuizComponent } from './quiz/quiz.component'
+import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { QuizComponent } from './quiz/quiz.component'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
