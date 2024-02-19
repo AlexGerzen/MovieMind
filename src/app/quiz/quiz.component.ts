@@ -18,6 +18,8 @@ export class QuizComponent implements OnInit {
   showIcon: boolean = true;
   playerAnswer: string = '';
   currentProgress: number = 1;
+  showReleaseYear: boolean = false;
+  showActors: boolean = false;
 
   constructor(private http: HttpClient) {
 
@@ -92,6 +94,10 @@ export class QuizComponent implements OnInit {
   lowerBlurEffect() {
     this.blurValue = this.blurValue - 6;
     this.showIcon = false;
+  }
+
+  showHint(hint: boolean) {
+    return true;
   }
 
   checkPlayerAnswer() {

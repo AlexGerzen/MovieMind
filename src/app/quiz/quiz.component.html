@@ -4,7 +4,9 @@
         <mat-card-content>
             <div class="poster-container">
                 <img [style.filter]="'blur(' + blurValue + 'px)'" class="movie-poster" src="{{movie.poster}}" alt="">
-                <mat-icon [class.lower-blur-icon]="showIcon" (click)="lowerBlurEffect()">blur_off</mat-icon>
+                <mat-icon #tooltip="matTooltip" matTooltip="Increase quality"
+                    [matTooltipPosition]="'above'" matTooltipHideDelay="1"
+                    [class.lower-blur-icon]="showIcon" (click)="lowerBlurEffect()">blur_off</mat-icon>
             </div>
             <div class="input-container">
                 <input [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name="" id="">
@@ -16,10 +18,12 @@
                     <p>{{movie.genre}}</p>
                 </div>
                 <div>Release Year:
-                    <p>{{movie.year}}</p>
+                    <p (click)="showReleaseYear = true"  class="show-hint" *ngIf="!showReleaseYear">Show Hint</p>
+                    <p *ngIf="showReleaseYear">{{movie.year}}</p>
                 </div>
                 <div>Actors:
-                    <p>{{movie.actors}}</p>
+                    <p (click)="showActors = true" class="show-hint" *ngIf="!showActors">Show Hint</p>
+                    <p *ngIf="showActors">{{movie.actors}}</p>
                 </div>
             </div>
 

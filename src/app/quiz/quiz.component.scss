@@ -144,6 +144,15 @@
     text-align: center;
 
     div {
-        background-color: green;
+        background-color: rgb(28, 179, 28);
+        border-right: 1px solid black;
+    }
+}
+
+.show-hint {
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
     }
 }
