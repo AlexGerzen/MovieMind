@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { QuizComponent } from './quiz/quiz.component'
 import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

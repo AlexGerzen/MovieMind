@@ -1,4 +1,24 @@
 <div class="quiz-page">
-    <div>{{movie.title}}</div>
-    <img src="{{movie.poster}}" alt="">
+    <mat-card class="card">
+        <mat-card-title>Guess the movie title</mat-card-title>
+        <mat-card-content>
+            <div class="poster-container">
+                <img [style.filter]="'blur(' + blurValue + 'px)'" class="movie-poster" src="{{movie.poster}}" alt="">
+                <mat-icon [class.lower-blur-icon]="showIcon" (click)="lowerBlurEffect()">blur_off</mat-icon>
+            </div>
+            <input type="text" placeholder="Make a guess" name="" id="">
+            <div class="hints">
+                <div>Genre:
+                    <p>{{movie.genre}}</p>
+                </div>
+                <div>Release Year:
+                    <p>{{movie.year}}</p>
+                </div>
+                <div>Actors:
+                    <p>{{movie.actors}}</p>
+                </div>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
 </div>

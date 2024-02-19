@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MovieMind';
-  showStartScreenStatus: boolean = true;
-  showQuizStatus: boolean = false;
+  showStartScreenStatus: boolean = false; // Standard: true
+  showQuizStatus: boolean = true; // Standard: false
 
   /**
    * This function is used to show the quiz component

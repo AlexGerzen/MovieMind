@@ -14,6 +14,8 @@ export class QuizComponent implements OnInit {
   apiKey: string = '&apikey=dd98c964';
   movie: Movie = new Movie();
   movieList: string[] = [];
+  blurValue: number = 10;
+  showIcon: boolean = true;
 
   constructor(private http: HttpClient) {
 
@@ -67,13 +69,6 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  // checkIfMovieExists() {
-  //   if (!this.movie.year || !this.movie.actors || this.movie.poster) {
-  //     console.log("null");
-
-  //     // this.fetchMovie(this.createUrl());
-  //   }
-  // }
 
   /**
    * This function is used to get a random number depending on the length of the array
@@ -87,5 +82,10 @@ export class QuizComponent implements OnInit {
       console.error("Ungültiges Array oder leeres Array übergeben.");
       return -1;
     }
+  }
+
+  lowerBlurEffect() {
+    this.blurValue = this.blurValue - 6;
+    this.showIcon = false;
   }
 }
