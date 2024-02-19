@@ -20,6 +20,7 @@ export class QuizComponent implements OnInit {
   currentProgress: number = 1;
   showReleaseYear: boolean = false;
   showActors: boolean = false;
+  showTitle: boolean = false;
   filteredMovies: string[] = [];
 
   constructor(private http: HttpClient) {
@@ -110,5 +111,10 @@ export class QuizComponent implements OnInit {
     } else {
       this.filteredMovies = []
     }
+  }
+
+  revealMovie() {
+    this.blurValue = 0;
+    this.showTitle = true;
   }
 }

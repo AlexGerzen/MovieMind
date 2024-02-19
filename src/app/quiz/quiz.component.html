@@ -9,10 +9,13 @@
                     (click)="lowerBlurEffect()">blur_off</mat-icon>
             </div>
             <div class="input-container">
-                <input (input)="filterMovieList()" [matAutocomplete]="auto" [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name="" id="">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"><mat-option *ngFor="let option of filteredMovies, index as i"  [value]="option">{{option}}</mat-option></mat-autocomplete>
-                
-                <button (click)="checkPlayerAnswer()">Check answer</button>
+                <input *ngIf="!showTitle" (input)="filterMovieList()" [matAutocomplete]="auto"
+                    [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name="" id="">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"><mat-option
+                        *ngFor="let option of filteredMovies, index as i" [value]="option">{{option}}</mat-option>
+                </mat-autocomplete>
+                <button *ngIf="!showTitle" (click)="checkPlayerAnswer()">Check answer</button>
+                <div *ngIf="showTitle" class="movie-title">{{movie.title}}</div>
             </div>
 
             <div class="hints">
@@ -20,15 +23,19 @@
                     <p>{{movie.genre}}</p>
                 </div>
                 <div>Release Year:
-                    <p (click)="showReleaseYear = true" class="show-hint" *ngIf="!showReleaseYear">Show Hint</p>
+                    <p #tooltip="matTooltip" matTooltip="Show release year" [matTooltipPosition]="'above'"
+                        matTooltipHideDelay="1" (click)="showReleaseYear = true" class="show-hint"
+                        *ngIf="!showReleaseYear">Show hint</p>
                     <p *ngIf="showReleaseYear">{{movie.year}}</p>
                 </div>
                 <div>Actors:
-                    <p (click)="showActors = true" class="show-hint" *ngIf="!showActors">Show Hint</p>
+                    <p #tooltip="matTooltip" matTooltip="Show actors" [matTooltipPosition]="'above'"
+                        matTooltipHideDelay="1" (click)="showActors = true" class="show-hint" *ngIf="!showActors">Show
+                        hint</p>
                     <p *ngIf="showActors">{{movie.actors}}</p>
                 </div>
             </div>
-
+            <button (click)="revealMovie()" class="reveal">Reveal</button>
         </mat-card-content>
         <div class="progressbar">
             <div [style.width]="(currentProgress + '0%')">
