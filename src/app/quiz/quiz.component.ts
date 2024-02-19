@@ -20,6 +20,7 @@ export class QuizComponent implements OnInit {
   currentProgress: number = 1;
   showReleaseYear: boolean = false;
   showActors: boolean = false;
+  filteredMovies: string[] = [];
 
   constructor(private http: HttpClient) {
 
@@ -27,7 +28,6 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.subMovieList()
-    
   }
 
   /**
@@ -66,7 +66,7 @@ export class QuizComponent implements OnInit {
         throw new Error('Fehler beim Abrufen der Daten');
       }
       const movieData = await response.json();
-      this.movie = new Movie(movieData);   
+      this.movie = new Movie(movieData);
     } catch (error) {
       console.error('Fehler beim Abrufen der Daten:', error);
       throw error;
@@ -96,11 +96,19 @@ export class QuizComponent implements OnInit {
     this.showIcon = false;
   }
 
-  showHint(hint: boolean) {
-    return true;
-  }
-
   checkPlayerAnswer() {
     console.log(this.movie.title.toLowerCase() == this.playerAnswer.toLowerCase());
+  }
+
+
+  /**
+   * This function is used to filter the movie list after the input of the player
+   */
+  filterMovieList() {
+    if (this.playerAnswer.length >= 3) {
+      this.filteredMovies = this.movieList.filter(item => item.toLowerCase().includes(this.playerAnswer.toLowerCase()));
+    } else {
+      this.filteredMovies = []
+    }
   }
 }

@@ -4,12 +4,14 @@
         <mat-card-content>
             <div class="poster-container">
                 <img [style.filter]="'blur(' + blurValue + 'px)'" class="movie-poster" src="{{movie.poster}}" alt="">
-                <mat-icon #tooltip="matTooltip" matTooltip="Increase quality"
-                    [matTooltipPosition]="'above'" matTooltipHideDelay="1"
-                    [class.lower-blur-icon]="showIcon" (click)="lowerBlurEffect()">blur_off</mat-icon>
+                <mat-icon #tooltip="matTooltip" matTooltip="Increase quality" [matTooltipPosition]="'above'"
+                    matTooltipHideDelay="1" [class.lower-blur-icon]="showIcon"
+                    (click)="lowerBlurEffect()">blur_off</mat-icon>
             </div>
             <div class="input-container">
-                <input [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name="" id="">
+                <input (input)="filterMovieList()" [matAutocomplete]="auto" [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name="" id="">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"><mat-option *ngFor="let option of filteredMovies, index as i"  [value]="option">{{option}}</mat-option></mat-autocomplete>
+                
                 <button (click)="checkPlayerAnswer()">Check answer</button>
             </div>
 
@@ -18,7 +20,7 @@
                     <p>{{movie.genre}}</p>
                 </div>
                 <div>Release Year:
-                    <p (click)="showReleaseYear = true"  class="show-hint" *ngIf="!showReleaseYear">Show Hint</p>
+                    <p (click)="showReleaseYear = true" class="show-hint" *ngIf="!showReleaseYear">Show Hint</p>
                     <p *ngIf="showReleaseYear">{{movie.year}}</p>
                 </div>
                 <div>Actors:

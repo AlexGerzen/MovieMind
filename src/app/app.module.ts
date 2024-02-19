@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatTooltipModule} from '@angular/material/tooltip'
     HttpClientModule,
     MatCardModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
