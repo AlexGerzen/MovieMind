@@ -25,6 +25,7 @@ export class QuizComponent implements OnInit {
   totalPoints: number = 0;
   roundPoints: number = 100;
   showNext: boolean = false;
+  enoughPoints: boolean = true;
 
   constructor(private http: HttpClient) {
 
@@ -102,7 +103,8 @@ export class QuizComponent implements OnInit {
 
   checkPlayerAnswer() {
     if (this.movie.title == this.playerAnswer) {
-      this.revealMovie();
+      this.revealMovie(false);
+      //Win screen
     } else {
       this.lowerRoundPoints(10);
     }
@@ -122,26 +124,58 @@ export class QuizComponent implements OnInit {
 
   /**
    * This function is used to clear the blur effect and show the title of the movie
+   * 
+   * @param playerGiveUp This variable will tell if the player gave up or the quiz is finished
    */
-  revealMovie() {
+  revealMovie(playerGiveUp: boolean) {
     this.blurValue = 0;
     this.showTitle = true;
     this.showNext = true;
     this.showActors = true;
     this.showReleaseYear = true;
     this.showIcon = false;
-    if (this.roundPoints > 0) {
+    if (playerGiveUp) {
       this.lowerRoundPoints(this.roundPoints);
     }
 
   }
 
+  /**
+   * This function is used to lower the round points
+   * 
+   * @param amount This is the amount of points that get subtracted
+   */
   lowerRoundPoints(amount: number) {
     this.roundPoints = this.roundPoints - amount;
     if (this.roundPoints <= 0) {
       this.roundPoints = 0;
-      this.revealMovie();
+      this.revealMovie(false);
       // Lose screen
     }
+  }
+
+  nextMovie() {
+    if (this.currentProgress >= 10) {
+      // end screen
+    } else {
+      this.totalPoints = this.totalPoints + this.roundPoints;
+      this.hideAllHints();
+      this.fetchMovie(this.createUrl());
+      this.currentProgress++;
+      this.roundPoints = 100;
+    }
+
+  }
+
+  /**
+   * This function is used to hide all hints
+   */
+  hideAllHints() {
+    this.showTitle = false;
+    this.showNext = false;
+    this.showActors = false;
+    this.showReleaseYear = false;
+    this.showIcon = true;
+    this.blurValue = 10;
   }
 }
