@@ -41,7 +41,8 @@
                 </div>
             </div>
             <div class="round-points">Round Points: {{roundPoints}}</div>
-            <button (click)="revealMovie()" class="reveal">Reveal</button>
+            <button *ngIf="!showNext" (click)="revealMovie()" class="reveal">Reveal</button>
+            <button *ngIf="showNext" class="next"><mat-icon>navigate_next</mat-icon></button>
         </mat-card-content>
         <div class="progressbar">
             <div [style.width]="(currentProgress + '0%')">

@@ -24,6 +24,7 @@ export class QuizComponent implements OnInit {
   filteredMovies: string[] = [];
   totalPoints: number = 0;
   roundPoints: number = 100;
+  showNext: boolean = false;
 
   constructor(private http: HttpClient) {
 
@@ -125,11 +126,19 @@ export class QuizComponent implements OnInit {
   revealMovie() {
     this.blurValue = 0;
     this.showTitle = true;
+    this.showNext = true;
+    this.showActors = true;
+    this.showReleaseYear = true;
+    this.showIcon = false;
+    if (this.roundPoints > 0) {
+      this.lowerRoundPoints(this.roundPoints);
+    }
+
   }
 
   lowerRoundPoints(amount: number) {
     this.roundPoints = this.roundPoints - amount;
-    if(this.roundPoints <= 0) {
+    if (this.roundPoints <= 0) {
       this.roundPoints = 0;
       this.revealMovie();
       // Lose screen
