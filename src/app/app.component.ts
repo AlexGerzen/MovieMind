@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MovieMind';
-  showStartScreenStatus: boolean = false; // Standard: true
-  showQuizStatus: boolean = true; // Standard: false
+  showStartScreenStatus: boolean = true; // Standard: true
+  showQuizStatus: boolean = false; // Standard: false
   showEndScreenStatus: boolean = false; // Standard: false
   endScore: number = 0;
 

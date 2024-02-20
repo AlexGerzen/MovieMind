@@ -1,7 +1,19 @@
 <div class="end-screen-container">
-    <mat-card>
+    <mat-card class="card">
+        <mat-card-title>Game Over</mat-card-title>
         <mat-card-content>
-            Your Score: {{endScore}}
+            <div class="end-score">
+                Your Score: {{endScore}}
+            </div>
+            <div *ngIf="endScore == 0" class="end-text">There is no way that you didn´t get one right. Have you ever watched a movie?</div>
+            <div *ngIf="endScore < 200 && endScore >= 1">Shame on you! Go and watch some movies</div>
+            <div *ngIf="endScore < 300 && endScore >= 200">Just try again, you can do better</div>
+            <div *ngIf="endScore < 500 && endScore >= 300" class="end-text">Average... That´s it.</div>
+            <div *ngIf="endScore < 600 && endScore >= 500" class="end-text">Not bad, but don´t feel special tho.</div>
+            <div *ngIf="endScore < 700 && endScore >= 600">Be honest. You were lucky right? Bet you can´t get that score again.</div>
+            <div *ngIf="endScore < 900 && endScore >= 700" class="end-text">Okay we get it, you know a lot about movies. Now go out and find some friends.</div>
+            <div *ngIf="endScore >= 900" class="end-text">Either you´re a cheater or all you do is watching movies. Both is not good...</div>
+            <button>Play again</button>
         </mat-card-content>
     </mat-card>
 </div>
