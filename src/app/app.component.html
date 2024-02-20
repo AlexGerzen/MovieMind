@@ -1,2 +1,3 @@
 <app-start-screen (showQuiz)="showQuiz()" *ngIf="showStartScreenStatus"></app-start-screen>
-<app-quiz *ngIf="showQuizStatus"></app-quiz>
+<app-quiz (showEndScreen)="showEndScreen($event)" *ngIf="showQuizStatus"></app-quiz>
+<app-end-screen [endScore]="endScore" *ngIf="showEndScreenStatus"></app-end-screen>

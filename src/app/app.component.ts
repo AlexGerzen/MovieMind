@@ -9,13 +9,26 @@ export class AppComponent {
   title = 'MovieMind';
   showStartScreenStatus: boolean = false; // Standard: true
   showQuizStatus: boolean = true; // Standard: false
+  showEndScreenStatus: boolean = false; // Standard: false
+  endScore: number = 0;
 
   /**
    * This function is used to show the quiz component
    */
-  public showQuiz() {
+  showQuiz() {
     this.resetAll();
     this.showQuizStatus = true;
+  }
+
+  /**
+   * This function will show the endscreen, and write the end score to the variable "endScore"
+   * 
+   * @param score This is the endScore, which is given from the quiz component
+   */
+  showEndScreen(score: number) {
+    this.resetAll();
+    this.endScore = score;
+    this.showEndScreenStatus = true;
   }
 
   /**
@@ -24,5 +37,6 @@ export class AppComponent {
   resetAll() {
     this.showQuizStatus = false;
     this.showStartScreenStatus = false;
+    this.showEndScreenStatus = false;
   }
 }

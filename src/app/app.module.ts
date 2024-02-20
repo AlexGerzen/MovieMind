@@ -12,12 +12,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip'
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { EndScreenComponent } from './end-screen/end-screen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartScreenComponent,
-    QuizComponent
+    QuizComponent,
+    EndScreenComponent
   ],
   imports: [
     BrowserModule,

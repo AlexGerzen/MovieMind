@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Movie } from 'src/models/movie.class';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,7 +17,7 @@ export class QuizComponent implements OnInit {
   blurValue: number = 10;
   showIcon: boolean = true;
   playerAnswer: string = '';
-  currentProgress: number = 1;
+  currentProgress: number = 1; // Standard: 1
   showReleaseYear: boolean = false;
   showActors: boolean = false;
   showTitle: boolean = false;
@@ -26,6 +26,8 @@ export class QuizComponent implements OnInit {
   roundPoints: number = 100;
   showNext: boolean = false;
   enoughPoints: boolean = true;
+  @Output() showEndScreen: EventEmitter<any> = new EventEmitter();
+  @Output() updateEndScore: EventEmitter<any> = new EventEmitter();
 
   constructor(private http: HttpClient) {
 
@@ -101,6 +103,9 @@ export class QuizComponent implements OnInit {
     this.showIcon = false;
   }
 
+  /**
+   * This function will check if the answer of the player is correct. If it is correct, the movie will be revealed and the win screen appears. If it is wrong it will lower the round points
+   */
   checkPlayerAnswer() {
     if (this.movie.title == this.playerAnswer) {
       this.revealMovie(false);
@@ -154,11 +159,14 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  /**
+   * This function is used to show the next movie question, if all questions are answered, it will show the endscreen
+   */
   nextMovie() {
+    this.totalPoints = this.totalPoints + this.roundPoints;
     if (this.currentProgress >= 10) {
-      // end screen
+      this.triggerShowEndScreen();
     } else {
-      this.totalPoints = this.totalPoints + this.roundPoints;
       this.hideAllHints();
       this.fetchMovie(this.createUrl());
       this.currentProgress++;
@@ -177,5 +185,12 @@ export class QuizComponent implements OnInit {
     this.showReleaseYear = false;
     this.showIcon = true;
     this.blurValue = 10;
+  }
+
+  /**
+   * This function is used to to trigger the "showEndScreen" function in the parent component 
+   */
+  triggerShowEndScreen() {
+    this.showEndScreen.emit(this.totalPoints);
   }
 }

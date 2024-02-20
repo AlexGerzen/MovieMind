@@ -76,7 +76,7 @@ export class StartScreenComponent implements OnInit {
   }
 
   /**
-   * This function is used to to trigger the "shwoQuiz" function in the parent component 
+   * This function is used to to trigger the "showQuiz" function in the parent component 
    */
   triggerShowQuiz() {
     this.showQuiz.emit();
