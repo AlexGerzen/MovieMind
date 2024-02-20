@@ -22,6 +22,8 @@ export class QuizComponent implements OnInit {
   showActors: boolean = false;
   showTitle: boolean = false;
   filteredMovies: string[] = [];
+  totalPoints: number = 0;
+  roundPoints: number = 100;
 
   constructor(private http: HttpClient) {
 
@@ -98,7 +100,11 @@ export class QuizComponent implements OnInit {
   }
 
   checkPlayerAnswer() {
-    console.log(this.movie.title.toLowerCase() == this.playerAnswer.toLowerCase());
+    if (this.movie.title == this.playerAnswer) {
+      this.revealMovie();
+    } else {
+      this.lowerRoundPoints(10);
+    }
   }
 
 
@@ -113,8 +119,20 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  /**
+   * This function is used to clear the blur effect and show the title of the movie
+   */
   revealMovie() {
     this.blurValue = 0;
     this.showTitle = true;
+  }
+
+  lowerRoundPoints(amount: number) {
+    this.roundPoints = this.roundPoints - amount;
+    if(this.roundPoints <= 0) {
+      this.roundPoints = 0;
+      this.revealMovie();
+      // Lose screen
+    }
   }
 }

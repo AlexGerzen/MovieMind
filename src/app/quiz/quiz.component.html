@@ -1,12 +1,17 @@
 <div class="quiz-page">
     <mat-card class="card">
-        <mat-card-title>Guess the movie title</mat-card-title>
+        <mat-card-title>
+            <div>
+                Total Points: 100
+            </div>
+            Guess the movie title
+        </mat-card-title>
         <mat-card-content>
             <div class="poster-container">
                 <img [style.filter]="'blur(' + blurValue + 'px)'" class="movie-poster" src="{{movie.poster}}" alt="">
-                <mat-icon #tooltip="matTooltip" matTooltip="Increase quality" [matTooltipPosition]="'above'"
+                <mat-icon #tooltip="matTooltip" matTooltip="Increase quality (-40 Points)" [matTooltipPosition]="'above'"
                     matTooltipHideDelay="1" [class.lower-blur-icon]="showIcon"
-                    (click)="lowerBlurEffect()">blur_off</mat-icon>
+                    (click)="lowerBlurEffect(); lowerRoundPoints(40)">blur_off</mat-icon>
             </div>
             <div class="input-container">
                 <input *ngIf="!showTitle" (input)="filterMovieList()" [matAutocomplete]="auto"
@@ -23,18 +28,19 @@
                     <p>{{movie.genre}}</p>
                 </div>
                 <div>Release Year:
-                    <p #tooltip="matTooltip" matTooltip="Show release year" [matTooltipPosition]="'above'"
-                        matTooltipHideDelay="1" (click)="showReleaseYear = true" class="show-hint"
+                    <p #tooltip="matTooltip" matTooltip="Show release year (-20 Points)" [matTooltipPosition]="'above'"
+                        matTooltipHideDelay="1" (click)="showReleaseYear = true; lowerRoundPoints(20)" class="show-hint"
                         *ngIf="!showReleaseYear">Show hint</p>
                     <p *ngIf="showReleaseYear">{{movie.year}}</p>
                 </div>
                 <div>Actors:
-                    <p #tooltip="matTooltip" matTooltip="Show actors" [matTooltipPosition]="'above'"
-                        matTooltipHideDelay="1" (click)="showActors = true" class="show-hint" *ngIf="!showActors">Show
+                    <p #tooltip="matTooltip" matTooltip="Show actors (-20 Points)" [matTooltipPosition]="'above'"
+                        matTooltipHideDelay="1" (click)="showActors = true; lowerRoundPoints(20)" class="show-hint" *ngIf="!showActors">Show
                         hint</p>
                     <p *ngIf="showActors">{{movie.actors}}</p>
                 </div>
             </div>
+            <div class="round-points">Round Points: {{roundPoints}}</div>
             <button (click)="revealMovie()" class="reveal">Reveal</button>
         </mat-card-content>
         <div class="progressbar">
