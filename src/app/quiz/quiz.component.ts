@@ -21,6 +21,7 @@ export class QuizComponent implements OnInit {
   showReleaseYear: boolean = false;
   showActors: boolean = false;
   showTitle: boolean = false;
+  showSpinner: boolean = false; //Standard: false
   filteredMovies: string[] = [];
   totalPoints: number = 0;
   roundPoints: number = 100;
@@ -168,12 +169,23 @@ export class QuizComponent implements OnInit {
       this.triggerShowEndScreen();
     } else {
       this.hideAllHints();
-      this.fetchMovie(this.createUrl());
+      this.loadNewMovie();
       this.currentProgress++;
       this.roundPoints = 100;
       this.playerAnswer = '';
     }
 
+  }
+
+  /**
+   * This function is used to show a progress spinner while loading the next movie
+   */
+  loadNewMovie() {
+    this.showSpinner = true;
+
+    this.fetchMovie(this.createUrl()).then(() => {
+      this.showSpinner = false;
+    });
   }
 
   /**
