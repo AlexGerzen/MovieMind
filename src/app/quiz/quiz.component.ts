@@ -171,6 +171,7 @@ export class QuizComponent implements OnInit {
       this.fetchMovie(this.createUrl());
       this.currentProgress++;
       this.roundPoints = 100;
+      this.playerAnswer = '';
     }
 
   }
