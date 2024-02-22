@@ -26,6 +26,7 @@
         cursor: default;
         font-family: "Quicksand", sans-serif !important;
         position: relative;
+        color: #ffb222;
 
         div {
             position: absolute;
@@ -41,6 +42,8 @@
         gap: 26px;
         overflow: auto;
         width: 100%;
+        height: 100%;
+        justify-content: center;
     }
 }
 

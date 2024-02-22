@@ -13,7 +13,7 @@
             <div *ngIf="endScore < 700 && endScore >= 600">Be honest. You were lucky right? Bet you can´t get that score again.</div>
             <div *ngIf="endScore < 900 && endScore >= 700" class="end-text">Okay we get it, you know a lot about movies. Now go out and find some friends.</div>
             <div *ngIf="endScore >= 900" class="end-text">Either you´re a cheater or all you do is watching movies. Both is not good...</div>
-            <button>Play again</button>
+            <button (click)="triggerShowQuiz()" mat-raised-button color="primary">Play Again</button>
         </mat-card-content>
     </mat-card>
 </div>

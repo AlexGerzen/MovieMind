@@ -30,7 +30,6 @@
 
         div {
             position: absolute;
-            left: 16px;
             color: white;
         }
     }
@@ -147,19 +146,6 @@
         color: black;
         font-size: 16px;
         margin-top: 0;
-    }
-}
-
-.progressbar {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: white;
-    text-align: center;
-
-    div {
-        background-color: rgb(28, 179, 28);
-        border-right: 1px solid black;
     }
 }
 

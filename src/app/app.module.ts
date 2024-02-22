@@ -14,6 +14,7 @@ import {MatTooltipModule} from '@angular/material/tooltip'
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { EndScreenComponent } from './end-screen/end-screen.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatIconModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
