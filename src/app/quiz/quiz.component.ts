@@ -24,11 +24,13 @@ export class QuizComponent implements OnInit {
   showTitle: boolean = false;
   showSpinner: boolean = false; //Standard: false
   shakeInputStatus: boolean = false;
+  lowerRoundPointsAnimation: boolean = false;
   filteredMovies: string[] = [];
   totalPoints: number = 0;
   roundPoints: number = 100;
   showNext: boolean = false;
   enoughPoints: boolean = true;
+  subtractedPoints: number = 0;
   @Output() showEndScreen: EventEmitter<any> = new EventEmitter();
   @Output() updateEndScore: EventEmitter<any> = new EventEmitter();
 
@@ -156,11 +158,20 @@ export class QuizComponent implements OnInit {
    */
   lowerRoundPoints(amount: number) {
     this.roundPoints = this.roundPoints - amount;
+    this.triggerLowerRoundPointsAnimation(amount);
     if (this.roundPoints <= 0) {
       this.roundPoints = 0;
       this.revealMovie(false);
-      // Lose screen
     }
+  }
+
+  triggerLowerRoundPointsAnimation(amount: number) {
+    this.lowerRoundPointsAnimation = true;
+    this.subtractedPoints = amount;
+
+    setTimeout(() => {
+      this.lowerRoundPointsAnimation = false;
+    }, 500);
   }
 
   /**
@@ -210,6 +221,9 @@ export class QuizComponent implements OnInit {
     this.showEndScreen.emit(this.totalPoints);
   }
 
+  /**
+   * This function is used to shake the input field
+   */
   shakeInput() {
     this.shakeInputStatus = true;
 

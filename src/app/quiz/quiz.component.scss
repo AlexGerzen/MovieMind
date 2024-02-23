@@ -232,11 +232,52 @@
     animation: shake 0.5s;
 
     @keyframes shake {
-        0% { transform: translateX(0); }
-        20% { transform: translateX(-10px); }
-        40% { transform: translateX(10px); }
-        60% { transform: translateX(-10px); }
-        80% { transform: translateX(10px); }
-        100% { transform: translateX(0); }
-      }
+        0% {
+            transform: translateX(0);
+        }
+
+        20% {
+            transform: translateX(-10px);
+        }
+
+        40% {
+            transform: translateX(10px);
+        }
+
+        60% {
+            transform: translateX(-10px);
+        }
+
+        80% {
+            transform: translateX(10px);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+}
+
+.lower-points {
+    animation: pointsAnimation 1.5s;
+    position: absolute;
+    bottom: 5%;
+    left: 110px;
+
+    @keyframes pointsAnimation {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        50% {
+            opacity: 1;
+            transform: translateY(-20px);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+    }
 }

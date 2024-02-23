@@ -18,8 +18,9 @@
                     (click)="lowerBlurEffect(); lowerRoundPoints(40)">blur_off</mat-icon>
             </div>
             <div class="input-container">
-                <input [class.shake]="shakeInputStatus" *ngIf="!showTitle" (input)="filterMovieList()" [matAutocomplete]="auto"
-                    [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name="" id="">
+                <input [class.shake]="shakeInputStatus" *ngIf="!showTitle" (input)="filterMovieList()"
+                    [matAutocomplete]="auto" [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name=""
+                    id="">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"><mat-option
                         *ngFor="let option of filteredMovies, index as i" [value]="option">{{option}}</mat-option>
                 </mat-autocomplete>
@@ -47,7 +48,10 @@
                     <p *ngIf="showActors">{{movie.actors}}</p>
                 </div>
             </div>
-            <div class="round-points">Round Points: {{roundPoints}}</div>
+            <div class="round-points">
+                Round Points: {{roundPoints}}
+                <span [class.hide]="!lowerRoundPointsAnimation" [class.lower-points]="lowerRoundPointsAnimation">-{{subtractedPoints}}</span>
+            </div>
             <button #tooltip="matTooltip" matTooltip="Reveal Movie (lose all points)" [matTooltipPosition]="'above'"
                 matTooltipHideDelay="1" *ngIf="!showNext" (click)="revealMovie(true)" class="reveal">Reveal</button>
             <button *ngIf="showNext" (click)="nextMovie()" class="next"><mat-icon>navigate_next</mat-icon></button>
