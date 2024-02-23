@@ -165,6 +165,11 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  /**
+   * This function is used to animate the amount of points that got subtracted
+   * 
+   * @param amount This is the amount of subtracted points
+   */
   triggerLowerRoundPointsAnimation(amount: number) {
     this.lowerRoundPointsAnimation = true;
     this.subtractedPoints = amount;

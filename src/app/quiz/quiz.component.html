@@ -7,7 +7,7 @@
             <div class="right-16px">
                 {{currentProgress}}/10
             </div>
-            Guess the movie title
+            <span>Guess the movie title</span>
         </mat-card-title>
         <mat-card-content *ngIf="!showSpinner">
             <div class="poster-container">
@@ -50,7 +50,8 @@
             </div>
             <div class="round-points">
                 Round Points: {{roundPoints}}
-                <span [class.hide]="!lowerRoundPointsAnimation" [class.lower-points]="lowerRoundPointsAnimation">-{{subtractedPoints}}</span>
+                <span [class.hide]="!lowerRoundPointsAnimation"
+                    [class.lower-points]="lowerRoundPointsAnimation">-{{subtractedPoints}}</span>
             </div>
             <button #tooltip="matTooltip" matTooltip="Reveal Movie (lose all points)" [matTooltipPosition]="'above'"
                 matTooltipHideDelay="1" *ngIf="!showNext" (click)="revealMovie(true)" class="reveal">Reveal</button>
