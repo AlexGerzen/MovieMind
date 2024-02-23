@@ -18,7 +18,7 @@
                     (click)="lowerBlurEffect(); lowerRoundPoints(40)">blur_off</mat-icon>
             </div>
             <div class="input-container">
-                <input *ngIf="!showTitle" (input)="filterMovieList()" [matAutocomplete]="auto"
+                <input [class.shake]="shakeInputStatus" *ngIf="!showTitle" (input)="filterMovieList()" [matAutocomplete]="auto"
                     [(ngModel)]="playerAnswer" type="text" placeholder="Make a guess" name="" id="">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"><mat-option
                         *ngFor="let option of filteredMovies, index as i" [value]="option">{{option}}</mat-option>

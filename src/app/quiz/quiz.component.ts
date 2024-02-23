@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
+
 export class QuizComponent implements OnInit {
   urlBase: string = 'http://www.omdbapi.com/?t='
   apiKey: string = '&apikey=dd98c964';
@@ -22,6 +23,7 @@ export class QuizComponent implements OnInit {
   showActors: boolean = false;
   showTitle: boolean = false;
   showSpinner: boolean = false; //Standard: false
+  shakeInputStatus: boolean = false;
   filteredMovies: string[] = [];
   totalPoints: number = 0;
   roundPoints: number = 100;
@@ -113,6 +115,7 @@ export class QuizComponent implements OnInit {
       //Win screen
     } else {
       this.lowerRoundPoints(10);
+      this.shakeInput();
     }
   }
 
@@ -205,5 +208,13 @@ export class QuizComponent implements OnInit {
    */
   triggerShowEndScreen() {
     this.showEndScreen.emit(this.totalPoints);
+  }
+
+  shakeInput() {
+    this.shakeInputStatus = true;
+
+    setTimeout(() => {
+      this.shakeInputStatus = false;
+    }, 500);
   }
 }

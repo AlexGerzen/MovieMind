@@ -27,12 +27,7 @@
         font-family: "Quicksand", sans-serif !important;
         position: relative;
         color: #ffb222;
-
-        div {
-            position: absolute;
-            left: 16px;
-            color: white;
-        }
+        font-size: 32px;
     }
 
     mat-card-content {
@@ -44,10 +39,41 @@
         width: 100%;
         height: 100%;
         justify-content: center;
+
+        div {
+            cursor: default;
+        }
     }
 }
 
 .end-score {
     font-size: 32px;
     font-weight: bold;
+}
+
+button {
+    background-color: rgb(255, 178, 34);
+    border-radius: 7px;
+    min-height: 50px;
+    min-width: 175px;
+    font-size: 24px;
+    // font-weight: bold;
+    color: white !important;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    border: none;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 20px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 20px 5px rgba(0, 0, 0, 0);
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    &:active {
+        background-color:black;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    }
+
 }
