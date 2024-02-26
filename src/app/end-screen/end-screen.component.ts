@@ -27,6 +27,11 @@ export class EndScreenComponent implements OnInit {
     this.showQuiz.emit();
   }
 
+  /**
+   * This function is used to get the data from the local storage
+   * 
+   * @returns It returns the high score from the localstorage
+   */
   getDataFromLocalStorage() {
     try {
       const data = localStorage.getItem(this.localStorageKey);
@@ -40,19 +45,24 @@ export class EndScreenComponent implements OnInit {
     }
   }
 
+  /**
+   * This function is used to safe the endscore in the local storage
+   * 
+   * @param endScore This is the score that will be safed in the local storage
+   */
   saveDataToLocalStorage(endScore: number) {
     try {
       const jsonData = JSON.stringify(endScore); // Convert data to JSON format
       localStorage.setItem(this.localStorageKey, jsonData); // Save data to Local Storage under the specified key
-      console.log('Data saved to local storage successfully.');
     } catch (error) {
       console.error('Error saving data to local storage:', error);
     }
   }
 
+  /**
+   * This function is used to check if the current end score is the new high score
+   */
   checkForNewHighScore() {
-    console.log(this.endScore);
-
     if (this.endScore > this.personalHighScore) {
       this.saveDataToLocalStorage(this.endScore);
     }
