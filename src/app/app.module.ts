@@ -15,13 +15,15 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { EndScreenComponent } from './end-screen/end-screen.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonModule} from '@angular/material/button';
+import { ImpressComponent } from './impress/impress.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartScreenComponent,
     QuizComponent,
-    EndScreenComponent
+    EndScreenComponent,
+    ImpressComponent
   ],
   imports: [
     BrowserModule,

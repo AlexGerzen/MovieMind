@@ -61,11 +61,11 @@
                 Total Points: {{totalPoints}}
             </div>
             <button *ngIf="!showNext" (click)="revealMovie(true)" mat-mini-fab color="warn"
-                class="show-mobile reveal-mobile">
+                class="reveal-mobile">
                 <mat-icon>visibility</mat-icon>
             </button>
             <button *ngIf="showNext" (click)="nextMovie()" mat-mini-fab color="primary"
-                class="show-mobile reveal-mobile">
+                class="reveal-mobile">
                 <mat-icon>navigate_next</mat-icon>
             </button>
             <button #tooltip="matTooltip" matTooltip="Reveal Movie (lose all points)" [matTooltipPosition]="'above'"

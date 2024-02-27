@@ -72,7 +72,7 @@ button {
     }
 
     &:active {
-        background-color:black;
+        background-color: black;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     }
@@ -84,6 +84,7 @@ button {
     font-size: 32px;
     color: rgb(255, 178, 34);
     padding-bottom: 40px;
+    text-align: center;
 }
 
 .think-smiley {
@@ -91,4 +92,54 @@ button {
     position: absolute;
     bottom: 20px;
     left: calc(50% - 62.5px);
+}
+
+.think-smiley-mobile {
+    width: 125px;
+}
+
+.mobile-title-container {
+    display: none;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 178, 34);
+}
+
+.mobile-title {
+    font-size: clamp(3rem, 2.5588rem + 2.3529vw, 4.5rem);
+    font-weight: bold;
+    animation: mobileTitleAni 2s ease 0s 1 normal forwards;
+
+    @keyframes mobileTitleAni {
+        0% {
+            transform: scaleX(0);
+        }
+    
+        100% {
+            transform: scaleX(1);
+        }
+    }
+}
+
+@media (max-width: 1320px) {
+    .start-screen-container {
+        justify-content: center;
+    }
+
+    .curved-text-container {
+        display: none ;
+    }
+
+    .mobile-title-container {
+        display: flex;
+    }
+}
+
+@media (max-width: 440px) {
+    .question {
+         font-size: 24px;
+    }
 }

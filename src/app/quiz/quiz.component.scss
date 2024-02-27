@@ -323,12 +323,17 @@
     position: absolute;
     bottom: 2%;
     right: 16px;
+    display: none;
 }
 
 @media (max-width: 630px) {
     .card {
         height: 100%;
         width: 100%;
+    }
+
+    .reveal-mobile {
+        display: block;
     }
 
     mat-card-title {
@@ -343,5 +348,16 @@
 
     .hints {
         text-align: center;
+    }
+}
+
+@media screen and (min-width: 630px) and (max-height: 900px) {
+    .reveal-mobile {
+        display: block;
+        bottom: 5%;
+    }
+
+    .reveal, .next {
+        display: none;
     }
 }
